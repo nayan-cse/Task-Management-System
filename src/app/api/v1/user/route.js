@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server';
-import { verifyToken } from '../../../lib/auth'; // verifyToken function to decode JWT
+import { verifyToken } from '../../../lib/auth';
 import { query } from '../../../lib/mysql';
 
 export async function GET(req) {
