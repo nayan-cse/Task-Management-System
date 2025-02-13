@@ -23,3 +23,18 @@ export async function PUT(req) {
 
     return NextResponse.json({ message: 'Task updated successfully' });
 }
+
+
+
+export async function DELETE(req) {
+    const url = req.nextUrl.pathname;
+    const id = url.split('/').pop();
+
+    const result = await query('DELETE FROM tasks WHERE id = ?', [id]);
+
+    if (result.affectedRows === 0) {
+        return NextResponse.json({ error: 'Task not found.' }, { status: 404 });
+    }
+
+    return NextResponse.json({ message: 'Task deleted successfully' });
+}
