@@ -1,90 +1,104 @@
 "use client";
-import { useRouter } from "next/navigation"; // Next.js router for navigation
 import React, { useState } from "react";
 
-const Login = () => {
-  const router = useRouter();
+const LoginForm = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setError(null);
+    setError("");
 
-    // Basic client-side validation
-    if (!email || !password) {
-      setError("Both email and password are required.");
-      setLoading(false);
-      return;
-    }
+    const response = await fetch("/api/v1/auth/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
 
-    try {
-      const response = await fetch("/api/v1/auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email, password }),
-      });
+    const data = await response.json();
 
-      const data = await response.json();
+    setLoading(false);
 
-      if (response.ok) {
-        // Store the tokens in localStorage
-        localStorage.setItem("accessToken", data.accessToken);
-        localStorage.setItem("refreshToken", data.refreshToken);
-
-        // Redirect to user profile page after login
-        router.push("/user");
-      } else {
-        setError(data.error || "Login failed");
-      }
-    } catch (err) {
-      setError("Something went wrong");
-    } finally {
-      setLoading(false);
+    if (response.status === 200) {
+      // Handle successful login (store tokens, redirect, etc.)
+      console.log("Login successful!", data);
+      // For example, you could store the tokens in localStorage:
+      localStorage.setItem("accessToken", data.accessToken);
+      localStorage.setItem("refreshToken", data.refreshToken);
+      // Redirect to a protected page (use routing as needed)
+    } else {
+      setError(data.error || "Something went wrong!");
     }
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        {/* Form Fields for Email and Password */}
-        <div>
-          <label htmlFor="email">Email</label>
-          <input
-            type="email"
-            id="email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </div>
-        <div>
-          <label htmlFor="password">Password</label>
-          <input
-            type="password"
-            id="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </div>
-        <button type="submit" disabled={loading}>
-          {loading ? "Logging in..." : "Login"}
-        </button>
-      </form>
+    <div className="flex justify-center items-center min-h-screen bg-gray-100">
+      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+        <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
 
-      <div>
-        <p>
-          Don't have an account? <a href="/register">Register</a>
-        </p>
+        {error && (
+          <div className="bg-red-500 text-white p-2 mb-4 rounded">{error}</div>
+        )}
+
+        <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <label
+              htmlFor="email"
+              className="block text-sm font-semibold text-gray-700"
+            >
+              Email
+            </label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              className="w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+          </div>
+
+          <div className="mb-6">
+            <label
+              htmlFor="password"
+              className="block text-sm font-semibold text-gray-700"
+            >
+              Password
+            </label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              className="w-full p-3 mt-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+              required
+            />
+          </div>
+
+          <button
+            type="submit"
+            className={`w-full p-3 text-white font-semibold rounded-md ${
+              loading ? "bg-gray-400" : "bg-blue-500"
+            } hover:bg-blue-600 focus:ring-2 focus:ring-blue-500 focus:outline-none`}
+            disabled={loading}
+          >
+            {loading ? "Logging in..." : "Login"}
+          </button>
+        </form>
+
+        <div className="mt-4 text-center text-sm">
+          <a href="/register" className="text-blue-500 hover:underline">
+            Don't have an account? Register
+          </a>
+        </div>
       </div>
     </div>
   );
 };
 
-export default Login;
+export default LoginForm;

@@ -21,6 +21,8 @@ export async function POST(req) {
 }
 
 export async function GET(req) {
-    const tasks = await query('SELECT * FROM tasks');
+    const url = req.nextUrl.pathname;
+    const id = url.split('/').pop();
+    const tasks = await query('SELECT * FROM tasks WHERE id = ?', [id]);
     return NextResponse.json({ tasks });
 }
