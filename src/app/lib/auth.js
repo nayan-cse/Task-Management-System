@@ -13,12 +13,10 @@ export const verifyToken = (req) => {
     const token = authorizationHeader.split(' ')[1];
 
     if (!token) {
-
         return NextResponse.json({ error: 'Token is missing in the Authorization header.' }, { status: 401 });
     }
 
     try {
-
         const decoded = jwt.verify(token, JWT_SECRET);
         return decoded;
     } catch (err) {
