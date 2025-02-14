@@ -16,12 +16,12 @@ const TaskManager = () => {
 
   // Fetch tasks from the API
   const fetchTasks = async () => {
-    const token = localStorage.getItem("accessToken"); // Get the token from localStorage
+    const token = localStorage.getItem("accessToken");
 
     const res = await fetch("/api/v1/tasks", {
       method: "GET",
       headers: {
-        Authorization: `Bearer ${token}`, // Include the token in the Authorization header
+        Authorization: `Bearer ${token}`,
       },
     });
 
@@ -39,12 +39,12 @@ const TaskManager = () => {
 
   const handleCreateTask = async () => {
     setLoading(true);
-    const token = localStorage.getItem("accessToken"); // Get the token from localStorage
+    const token = localStorage.getItem("accessToken");
     const res = await fetch("/api/v1/tasks", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`, // Include the token in the Authorization header
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(taskData),
     });
@@ -59,7 +59,7 @@ const TaskManager = () => {
         status: "Pending",
       });
       setShowModal(false);
-      fetchTasks();
+      fetchTasks(); // Fetch tasks after creating a new one
     } else {
       alert(data.error || "Something went wrong!");
     }
@@ -67,12 +67,12 @@ const TaskManager = () => {
 
   const handleUpdateTask = async () => {
     setLoading(true);
-    const token = localStorage.getItem("accessToken"); // Get the token from localStorage
+    const token = localStorage.getItem("accessToken");
     const res = await fetch(`/api/v1/tasks/${selectedTask.id}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer ${token}`, // Include the token in the Authorization header
+        Authorization: `Bearer ${token}`,
       },
       body: JSON.stringify(taskData),
     });
@@ -88,23 +88,23 @@ const TaskManager = () => {
         status: "Pending",
       });
       setShowModal(false);
-      fetchTasks();
+      fetchTasks(); // Fetch tasks after updating one
     } else {
       alert(data.error || "Something went wrong!");
     }
   };
 
   const handleDeleteTask = async (id) => {
-    const token = localStorage.getItem("accessToken"); // Get the token from localStorage
+    const token = localStorage.getItem("accessToken");
     const res = await fetch(`/api/v1/tasks/${id}`, {
       method: "DELETE",
       headers: {
-        Authorization: `Bearer ${token}`, // Include the token in the Authorization header
+        Authorization: `Bearer ${token}`,
       },
     });
     const data = await res.json();
     if (res.status === 200) {
-      fetchTasks();
+      fetchTasks(); // Fetch tasks after deleting one
     } else {
       alert(data.error || "Something went wrong!");
     }
@@ -113,10 +113,12 @@ const TaskManager = () => {
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="flex justify-between items-center mb-6">
-        <h1 className="text-3xl font-bold text-gray-800">Task Management</h1>
+        <h1 className="text-4xl font-bold text-gray-800 transition-all duration-300 hover:text-blue-600">
+          Task Management
+        </h1>
         <button
           onClick={() => setShowModal(true)}
-          className="bg-blue-500 text-white p-3 rounded-md shadow-md hover:bg-blue-600"
+          className="bg-blue-500 text-white p-3 rounded-md shadow-md hover:bg-blue-600 transition-all duration-300"
         >
           Create New Task
         </button>
@@ -126,7 +128,7 @@ const TaskManager = () => {
         {tasks.map((task) => (
           <div
             key={task.id}
-            className="bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-200"
+            className="bg-white p-4 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 transform hover:scale-105"
           >
             <h2 className="text-xl font-semibold text-gray-800">
               {task.title}
@@ -150,13 +152,13 @@ const TaskManager = () => {
                   });
                   setShowModal(true);
                 }}
-                className="bg-yellow-500 text-white p-2 rounded-md hover:bg-yellow-600"
+                className="bg-yellow-500 text-white p-2 rounded-md hover:bg-yellow-600 transition-all duration-300"
               >
                 Edit
               </button>
               <button
                 onClick={() => handleDeleteTask(task.id)}
-                className="bg-red-500 text-white p-2 ml-2 rounded-md hover:bg-red-600"
+                className="bg-red-500 text-white p-2 ml-2 rounded-md hover:bg-red-600 transition-all duration-300"
               >
                 Delete
               </button>
@@ -166,9 +168,9 @@ const TaskManager = () => {
       </div>
 
       {showModal && (
-        <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50">
-          <div className="bg-white p-6 rounded-lg w-96">
-            <h2 className="text-2xl font-bold mb-4">
+        <div className="fixed inset-0 flex justify-center items-center bg-black bg-opacity-50 transition-all duration-300">
+          <div className="bg-white p-6 rounded-lg w-96 transform transition-all duration-500 ease-in-out">
+            <h2 className="text-2xl font-bold mb-4 text-center">
               {selectedTask ? "Edit Task" : "Create Task"}
             </h2>
             <form
