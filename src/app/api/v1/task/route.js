@@ -8,11 +8,16 @@ export async function POST(req) {
         return NextResponse.json({ error: 'All fields are required.' }, { status: 400 });
     }
 
-    const result = await query(
-        'INSERT INTO tasks (title, description, due_date, assigned_user) VALUES (?, ?, ?, ?)', [title, description, due_date, assigned_user]
-    );
+    try {
+        const result = await query(
+            'INSERT INTO tasks (title, description, due_date, assigned_user) VALUES (?, ?, ?, ?)', [title, description, due_date, assigned_user]
+        );
 
-    return NextResponse.json({ message: 'Task created successfully', taskId: result.insertId });
+        return NextResponse.json({ message: 'Task created successfully', taskId: result.insertId });
+    } catch (error) {
+        console.error('Error during task creation:', error);
+        return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    }
 }
 
 export async function GET(req) {
