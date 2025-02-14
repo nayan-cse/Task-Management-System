@@ -25,7 +25,6 @@ export async function PUT(req) {
 }
 
 
-
 export async function DELETE(req) {
     const url = req.nextUrl.pathname;
     const id = url.split('/').pop();

@@ -18,6 +18,7 @@ export const verifyToken = (req) => {
     }
 
     try {
+
         const decoded = jwt.verify(token, JWT_SECRET);
         return decoded;
     } catch (err) {
