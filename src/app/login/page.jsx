@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
 const LoginForm = () => {
@@ -9,6 +9,13 @@ const LoginForm = () => {
   const [loading, setLoading] = useState(false);
   const router = useRouter();
 
+  // Check if the user is already logged in and redirect to /tasks
+  useEffect(() => {
+    const token = localStorage.getItem("accessToken");
+    if (token) {
+      router.push("/tasks"); // Redirect to /tasks if the token exists
+    }
+  }, [router]);
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
