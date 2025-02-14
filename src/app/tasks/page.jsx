@@ -1,10 +1,13 @@
 "use client";
 import React, { useState, useEffect } from "react";
+import LogoutButton from "../components/logout/page";
+import { useRouter } from "next/navigation";
 
 const TaskManager = () => {
   const [tasks, setTasks] = useState([]);
   const [selectedTask, setSelectedTask] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const router = useRouter();
   const [taskData, setTaskData] = useState({
     title: "",
     description: "",
@@ -26,7 +29,9 @@ const TaskManager = () => {
     });
 
     const data = await res.json();
-    if (res.status === 200) {
+    if (res.status === 401) {
+      router.push("/login");
+    } else if (res.status === 200) {
       setTasks(data.tasks || []);
     } else {
       alert(data.error || "Something went wrong while fetching tasks");
@@ -122,6 +127,7 @@ const TaskManager = () => {
         >
           Create New Task
         </button>
+        <LogoutButton />
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -134,7 +140,9 @@ const TaskManager = () => {
               {task.title}
             </h2>
             <p className="text-gray-600 mt-2">{task.description}</p>
-            <p className="text-gray-500 mt-2">Due: {task.due_date}</p>
+            <p className="text-gray-500 mt-2">
+              Due: {new Date(task.due_date).toLocaleString()}
+            </p>
             <p className="text-gray-500 mt-2">
               Assigned to: {task.assigned_user}
             </p>

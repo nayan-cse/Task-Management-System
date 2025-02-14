@@ -47,8 +47,17 @@ export async function DELETE(req) {
 
 
 export async function GET(req) {
-    const url = req.nextUrl.pathname;
-    const id = url.split('/').pop();
-    const tasks = await query('SELECT * FROM tasks WHERE id = ?', [id]);
-    return NextResponse.json({ tasks });
+    const user = verifyToken(req);
+    if (user instanceof NextResponse) return user; // If the token verification fails, return the error response
+
+    try {
+        const tasks = await query('SELECT tasks.* FROM tasks JOIN users ON users.id = tasks.user_id WHERE tasks.user_id = ?', [user.id]);
+        if (tasks.length === 0) {
+            return NextResponse.json({ error: 'Your Task is empty.' }, { status: 404 });
+        }
+        return NextResponse.json({ tasks });
+    } catch (error) {
+        console.error('Error during task retrieval:', error);
+        return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    }
 }
