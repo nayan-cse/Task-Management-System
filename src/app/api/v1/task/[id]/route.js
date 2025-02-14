@@ -44,3 +44,11 @@ export async function DELETE(req) {
         return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
     }
 }
+
+
+export async function GET(req) {
+    const url = req.nextUrl.pathname;
+    const id = url.split('/').pop();
+    const tasks = await query('SELECT * FROM tasks WHERE id = ?', [id]);
+    return NextResponse.json({ tasks });
+}
