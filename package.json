@@ -18,7 +18,8 @@
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.1.5",
     "sweetalert2": "^11.16.1",
-    "task-manager": "file:"
+    "task-manager": "file:",
+    "winston": "^3.17.0"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3",
