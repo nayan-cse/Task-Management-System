@@ -1,6 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import Swal from "sweetalert2";
 
 const LoginForm = () => {
   const [email, setEmail] = useState("");
@@ -13,7 +14,7 @@ const LoginForm = () => {
   useEffect(() => {
     const token = localStorage.getItem("accessToken");
     if (token) {
-      router.push("/tasks"); // Redirect to /tasks if the token exists
+      router.push("/tasks");
     }
   }, [router]);
   const handleSubmit = async (e) => {
@@ -35,14 +36,24 @@ const LoginForm = () => {
 
     if (response.status === 200) {
       // Handle successful login (store tokens, redirect, etc.)
-      console.log("Login successful!", data);
+      Swal.fire({
+        title: "Success!",
+        text: "Successfully Logged in!",
+        icon: "success",
+        confirmButtonText: "OK",
+      });
       // For example, you could store the tokens in localStorage:
       localStorage.setItem("accessToken", data.accessToken);
       localStorage.setItem("refreshToken", data.refreshToken);
       // Redirect to a protected page (use routing as needed)
       router.push("/tasks");
     } else {
-      setError(data.error || "Something went wrong!");
+      Swal.fire({
+        title: "Error!",
+        text: data.error || "Something went wrong!",
+        icon: "error",
+        confirmButtonText: "OK",
+      });
     }
   };
 

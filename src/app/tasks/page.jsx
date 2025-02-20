@@ -5,6 +5,7 @@ import TaskList from "../components/TaskList";
 import TaskModal from "../components/TaskModal";
 import LogoutButton from "../components/logout";
 import Swal from "sweetalert2";
+import { ClipLoader } from "react-spinners";
 
 const TaskManager = () => {
   const [tasks, setTasks] = useState([]);
@@ -38,6 +39,7 @@ const TaskManager = () => {
 
   // Fetch tasks from the API with pagination
   const fetchTasks = async (page = 1, limit = 5) => {
+    setLoading(true);
     const token = localStorage.getItem("accessToken");
     const res = await fetch(`/api/v1/tasks?page=${page}&limit=${limit}`, {
       method: "GET",
@@ -46,6 +48,7 @@ const TaskManager = () => {
       },
     });
     const data = await res.json();
+    setLoading(false);
     if (res.status === 401) {
       router.push("/login");
     } else if (res.status === 200) {
@@ -202,6 +205,27 @@ const TaskManager = () => {
     }
   };
 
+  const handleLogout = () => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You want to logout",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonText: "Yes, logout",
+      cancelButtonText: "No, cancel",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        localStorage.removeItem("accessToken");
+        router.push("/login");
+        Swal.fire(
+          "Logged out!",
+          "You have been logged out successfully.",
+          "success"
+        );
+      }
+    });
+  };
+
   return (
     <div className="min-h-screen bg-gray-50 p-6">
       <div className="flex justify-between items-center mb-6">
@@ -225,8 +249,20 @@ const TaskManager = () => {
             Create New Task
           </button>
         </div>
-        <LogoutButton />
+        <button
+          onClick={handleLogout}
+          className="bg-red-500 text-white p-3 rounded-md shadow-md hover:bg-red-600 transition-all duration-300"
+        >
+          Logout
+        </button>
       </div>
+
+      {/* Centered spinner */}
+      {loading && (
+        <div className="flex justify-center items-center w-full h-full absolute bg-white bg-opacity-50 z-50">
+          <ClipLoader color={"#000"} loading={loading} size={50} />
+        </div>
+      )}
 
       <TaskList
         tasks={tasks}
