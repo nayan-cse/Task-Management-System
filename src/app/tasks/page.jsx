@@ -186,7 +186,7 @@ const TaskManager = () => {
         icon: "success",
         confirmButtonText: "OK",
       });
-      // If we're on the last page and delete the last item, go to previous page
+
       if (tasks.length === 1 && pagination.currentPage > 1) {
         handlePageChange(pagination.currentPage - 1);
       } else {
