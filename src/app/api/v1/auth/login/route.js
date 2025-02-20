@@ -1,9 +1,8 @@
-// src/app/api/v1/auth/login/route.js
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { query } from '../../../../lib/mysql';
 import { NextResponse } from 'next/server';
-import logger from '../../../../lib/logger'; // Import the logger
+import logger from '../../../../lib/logger';
 
 const JWT_SECRET = process.env.JWT_SECRET;
 const JWT_ACCESS_TOKEN_EXPIRATION = process.env.JWT_ACCESS_TOKEN_EXPIRATION;

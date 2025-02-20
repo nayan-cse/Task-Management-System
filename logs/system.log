@@ -8,3 +8,138 @@
 2025-02-15T08:03:05.934Z [info]: Task created successfully for user 7. Task ID: 50021
 2025-02-15T08:03:06.076Z [info]: Successfully retrieved tasks for user 7
 2025-02-15T08:04:14.986Z [warn]: Login failed: Incorrect password for email pervejbd2029@gmail.com
+2025-02-15T15:51:32.692Z [info]: User pervejbd2029@gmail.com logged in successfully
+2025-02-15T15:51:34.232Z [info]: Successfully retrieved tasks for user 7
+2025-02-15T15:51:34.298Z [info]: Successfully retrieved tasks for user 7
+2025-02-15T15:52:01.936Z [warn]: Login failed: Incorrect password for email pervejbd2029@gmail.com
+2025-02-15T15:52:54.433Z [info]: User pervejbd2029@gmail.com logged in successfully
+2025-02-15T15:52:54.733Z [info]: Successfully retrieved tasks for user 7
+2025-02-15T15:52:54.837Z [info]: Successfully retrieved tasks for user 7
+2025-02-15T15:56:10.749Z [info]: Login attempt from IP: undefined
+2025-02-15T15:56:11.172Z [info]: User pervejbd2029@gmail.com logged in successfully from undefined
+2025-02-15T15:56:12.959Z [info]: Successfully retrieved tasks for user 7
+2025-02-15T15:56:13.051Z [info]: Successfully retrieved tasks for user 7
+{"level":"info","message":"User nayan.cse.just@gmail.com registered successfully","timestamp":"2025-02-15T16:42:52.482Z"}
+{"level":"info","message":"User nayan.cse.just@gmail.com logged in successfully","timestamp":"2025-02-15T16:43:04.764Z"}
+{"level":"warn","message":"No tasks found for user 8","timestamp":"2025-02-15T16:43:06.613Z"}
+{"level":"warn","message":"No tasks found for user 8","timestamp":"2025-02-15T16:43:06.690Z"}
+{"level":"info","message":"Task created successfully for user 8. Task ID: 50022","timestamp":"2025-02-15T16:46:53.598Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 8","timestamp":"2025-02-15T16:46:54.066Z"}
+{"level":"info","message":"Task with ID 50022 updated successfully","timestamp":"2025-02-15T16:47:30.875Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 8","timestamp":"2025-02-15T16:47:31.066Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 7","timestamp":"2025-02-15T16:49:25.278Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 7","timestamp":"2025-02-15T16:49:25.353Z"}
+{"level":"info","message":"User pervejbd2029@gmail.com logged in successfully","timestamp":"2025-02-15T16:49:48.717Z"}
+{"level":"info","message":"User nayan.cse.just@gmail.com logged in successfully","timestamp":"2025-02-15T16:49:48.732Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 7","timestamp":"2025-02-15T16:49:49.043Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 7","timestamp":"2025-02-15T16:49:49.105Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 8","timestamp":"2025-02-15T16:49:49.222Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 8","timestamp":"2025-02-15T16:49:49.316Z"}
+{"level":"info","message":"Task created successfully for user 7. Task ID: 50023","timestamp":"2025-02-15T16:51:02.196Z"}
+{"level":"info","message":"Task created successfully for user 8. Task ID: 50024","timestamp":"2025-02-15T16:51:02.202Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 7","timestamp":"2025-02-15T16:51:02.335Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 8","timestamp":"2025-02-15T16:51:02.389Z"}
+{"level":"info","message":"Task with ID 50023 updated successfully","timestamp":"2025-02-15T16:51:44.325Z"}
+{"level":"info","message":"Task with ID 50024 updated successfully","timestamp":"2025-02-15T16:51:44.330Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 7","timestamp":"2025-02-15T16:51:44.483Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 8","timestamp":"2025-02-15T16:51:44.546Z"}
+{"level":"info","message":"Task with ID 50024 deleted successfully","timestamp":"2025-02-15T16:55:05.818Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 8","timestamp":"2025-02-15T16:55:07.350Z"}
+{"level":"error","message":"Login error: Access denied for user 'root'@'localhost' (using password: NO)","timestamp":"2025-02-20T05:20:16.448Z"}
+{"level":"warn","message":"Login failed: User with email john1.doe@example.com not found","timestamp":"2025-02-20T05:28:45.974Z"}
+{"level":"info","message":"User jane.doe20@example.com logged in successfully","timestamp":"2025-02-20T05:30:53.825Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1","timestamp":"2025-02-20T05:31:01.549Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1","timestamp":"2025-02-20T05:31:01.834Z"}
+{"level":"error","message":"Error during task retrieval for user 1: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '= ?' at line 1","timestamp":"2025-02-20T05:40:04.930Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1","timestamp":"2025-02-20T05:40:56.820Z"}
+{"level":"info","message":"User jane.doe20@example.com logged in successfully","timestamp":"2025-02-20T05:44:17.781Z"}
+{"level":"error","message":"Error during task retrieval for user 1: Incorrect arguments to mysqld_stmt_execute","timestamp":"2025-02-20T05:47:09.671Z"}
+{"level":"error","message":"Error during task retrieval for user 1: Incorrect arguments to mysqld_stmt_execute","timestamp":"2025-02-20T05:47:51.154Z"}
+{"level":"info","message":"User ID: 1, Page: 2, Limit: 10, Offset: 10","timestamp":"2025-02-20T05:50:37.303Z"}
+{"level":"error","message":"Error during task retrieval for user 1: Incorrect arguments to mysqld_stmt_execute","timestamp":"2025-02-20T05:50:37.530Z"}
+{"level":"info","message":"User ID: 1, Page: 2, Limit: 10, Offset: 10","timestamp":"2025-02-20T05:52:46.457Z"}
+{"level":"error","message":"Error during task retrieval for user 1: Incorrect arguments to mysqld_stmt_execute","timestamp":"2025-02-20T05:52:46.528Z"}
+{"level":"info","message":"User ID: 1, Page: 2, Limit: 10, Offset: 10","timestamp":"2025-02-20T05:56:17.642Z"}
+{"level":"error","message":"Error during task retrieval for user 1: Incorrect arguments to mysqld_stmt_execute","timestamp":"2025-02-20T05:56:17.792Z"}
+{"level":"info","message":"User ID: 1, Page: 2, Limit: 10, Offset: 10","timestamp":"2025-02-20T05:59:35.063Z"}
+{"level":"error","message":"Error during task retrieval for user 1: Incorrect arguments to mysqld_stmt_execute","timestamp":"2025-02-20T05:59:35.068Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1","timestamp":"2025-02-20T06:02:07.028Z"}
+{"level":"info","message":"Task created successfully for user 1. Task ID: 50025","timestamp":"2025-02-20T06:02:19.428Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1","timestamp":"2025-02-20T06:02:19.516Z"}
+{"level":"info","message":"Task created successfully for user 1. Task ID: 50026","timestamp":"2025-02-20T06:02:28.859Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1","timestamp":"2025-02-20T06:02:28.936Z"}
+{"level":"info","message":"Task created successfully for user 1. Task ID: 50027","timestamp":"2025-02-20T06:02:37.661Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1","timestamp":"2025-02-20T06:02:37.733Z"}
+{"level":"info","message":"Task created successfully for user 1. Task ID: 50028","timestamp":"2025-02-20T06:02:48.910Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1","timestamp":"2025-02-20T06:02:48.988Z"}
+{"level":"info","message":"Task created successfully for user 1. Task ID: 50029","timestamp":"2025-02-20T06:02:59.509Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1","timestamp":"2025-02-20T06:02:59.574Z"}
+{"level":"info","message":"Task created successfully for user 1. Task ID: 50030","timestamp":"2025-02-20T06:03:08.763Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1","timestamp":"2025-02-20T06:03:08.829Z"}
+{"level":"info","message":"User ID: 1, Page: 1, Limit: 25, Offset: 0","timestamp":"2025-02-20T06:09:10.281Z"}
+{"level":"error","message":"Error during task retrieval for user 1: Incorrect arguments to mysqld_stmt_execute","timestamp":"2025-02-20T06:09:10.408Z"}
+{"level":"info","message":"User ID: 1, Page: 2, Limit: 10, Offset: 10","timestamp":"2025-02-20T06:09:25.270Z"}
+{"level":"error","message":"Error during task retrieval for user 1: Incorrect arguments to mysqld_stmt_execute","timestamp":"2025-02-20T06:09:25.354Z"}
+{"level":"info","message":"User ID: 1, Page: 2, Limit: 10, Offset: 10","timestamp":"2025-02-20T06:16:33.826Z"}
+{"level":"error","message":"Error during task retrieval for user 1: Incorrect arguments to mysqld_stmt_execute","timestamp":"2025-02-20T06:16:34.223Z"}
+{"level":"info","message":"User ID: 1, Page: 2, Limit: 5, Offset: 5","timestamp":"2025-02-20T06:22:53.492Z"}
+{"level":"error","message":"Error during task retrieval for user 1: Incorrect arguments to mysqld_stmt_execute","timestamp":"2025-02-20T06:22:53.646Z"}
+{"level":"info","message":"User ID: 1, Page: 2, Limit: 5, Offset: 5","timestamp":"2025-02-20T06:26:51.784Z"}
+{"level":"error","message":"Error during task retrieval for user 1: Incorrect arguments to mysqld_stmt_execute","timestamp":"2025-02-20T06:26:51.965Z"}
+{"level":"info","message":"User ID: 1, Page: 2, Limit: 5, Offset: 5","timestamp":"2025-02-20T06:30:27.514Z"}
+{"level":"error","message":"Error during task retrieval for user 1: Incorrect arguments to mysqld_stmt_execute","timestamp":"2025-02-20T06:30:28.340Z"}
+{"level":"info","message":"User ID: 1, Page: 2, Limit: 5, Offset: 5","timestamp":"2025-02-20T06:31:10.529Z"}
+{"level":"error","message":"Error during task retrieval for user 1: Incorrect arguments to mysqld_stmt_execute","timestamp":"2025-02-20T06:31:10.592Z"}
+{"level":"info","message":"User ID: 1, Page: 2, Limit: 5, Offset: 5","timestamp":"2025-02-20T06:31:29.258Z"}
+{"level":"error","message":"Error during task retrieval for user 1: Incorrect arguments to mysqld_stmt_execute","timestamp":"2025-02-20T06:31:29.310Z"}
+{"level":"info","message":"User ID: 1, Page: 2, Limit: 5, Offset: 5","timestamp":"2025-02-20T06:33:08.663Z"}
+{"level":"error","message":"Error during task retrieval for user 1: Incorrect arguments to mysqld_stmt_execute","timestamp":"2025-02-20T06:33:08.727Z"}
+{"level":"info","message":"User ID: 1, Page: 2, Limit: 5, Offset: 5","timestamp":"2025-02-20T06:36:39.981Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 2","timestamp":"2025-02-20T06:36:40.896Z"}
+{"level":"info","message":"User ID: 1, Page: 1, Limit: 25, Offset: 0","timestamp":"2025-02-20T06:36:57.498Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 1","timestamp":"2025-02-20T06:36:57.614Z"}
+{"level":"info","message":"User ID: 1, Page: 1, Limit: 25, Offset: 0","timestamp":"2025-02-20T06:39:32.846Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 1","timestamp":"2025-02-20T06:39:33.271Z"}
+{"level":"info","message":"User ID: 1, Page: 2, Limit: 5, Offset: 5","timestamp":"2025-02-20T06:39:41.948Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 2","timestamp":"2025-02-20T06:39:42.305Z"}
+{"level":"warn","message":"Login failed: User with email john1.doe@example.com not found","timestamp":"2025-02-20T06:41:03.233Z"}
+{"level":"warn","message":"Login failed: Incorrect password for email jane.doe20@example.com","timestamp":"2025-02-20T06:41:27.105Z"}
+{"level":"warn","message":"Login failed: Incorrect password for email jane.doe20@example.com","timestamp":"2025-02-20T06:41:28.414Z"}
+{"level":"info","message":"User jane.doe20@example.com logged in successfully","timestamp":"2025-02-20T06:41:35.328Z"}
+{"level":"info","message":"User ID: 1, Page: 1, Limit: 5, Offset: 0","timestamp":"2025-02-20T06:41:37.556Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 1","timestamp":"2025-02-20T06:41:41.901Z"}
+{"level":"info","message":"User ID: 1, Page: 1, Limit: 5, Offset: 0","timestamp":"2025-02-20T06:41:41.914Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 1","timestamp":"2025-02-20T06:41:41.970Z"}
+{"level":"info","message":"User ID: 1, Page: 2, Limit: 5, Offset: 5","timestamp":"2025-02-20T06:42:00.244Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 2","timestamp":"2025-02-20T06:42:00.339Z"}
+{"level":"info","message":"User ID: 1, Page: 1, Limit: 5, Offset: 0","timestamp":"2025-02-20T06:42:18.336Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 1","timestamp":"2025-02-20T06:42:18.522Z"}
+{"level":"info","message":"User ID: 1, Page: 2, Limit: 5, Offset: 5","timestamp":"2025-02-20T06:42:21.737Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 2","timestamp":"2025-02-20T06:42:21.799Z"}
+{"level":"info","message":"User ID: 1, Page: 1, Limit: 5, Offset: 0","timestamp":"2025-02-20T06:42:23.876Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 1","timestamp":"2025-02-20T06:42:23.935Z"}
+{"level":"info","message":"User ID: 1, Page: 2, Limit: 5, Offset: 5","timestamp":"2025-02-20T06:42:24.742Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 2","timestamp":"2025-02-20T06:42:24.801Z"}
+{"level":"info","message":"User ID: 1, Page: 3, Limit: 5, Offset: 10","timestamp":"2025-02-20T06:42:25.388Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 3","timestamp":"2025-02-20T06:42:25.454Z"}
+{"level":"info","message":"User ID: 1, Page: 2, Limit: 5, Offset: 5","timestamp":"2025-02-20T06:42:28.051Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 2","timestamp":"2025-02-20T06:42:28.113Z"}
+{"level":"info","message":"User ID: 1, Page: 1, Limit: 5, Offset: 0","timestamp":"2025-02-20T06:42:29.934Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 1","timestamp":"2025-02-20T06:42:29.994Z"}
+{"level":"info","message":"User ID: 1, Page: 1, Limit: 5, Offset: 0","timestamp":"2025-02-20T07:13:46.213Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 1","timestamp":"2025-02-20T07:13:46.423Z"}
+{"level":"info","message":"User ID: 1, Page: 2, Limit: 5, Offset: 5","timestamp":"2025-02-20T07:13:52.961Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 2","timestamp":"2025-02-20T07:13:53.019Z"}
+{"level":"info","message":"User ID: 1, Page: 1, Limit: 5, Offset: 0","timestamp":"2025-02-20T07:14:04.664Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 1","timestamp":"2025-02-20T07:14:04.726Z"}
+{"level":"info","message":"User ID: 1, Page: 2, Limit: 5, Offset: 5","timestamp":"2025-02-20T07:14:14.197Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 2","timestamp":"2025-02-20T07:14:14.254Z"}
+{"level":"info","message":"User ID: 1, Page: 3, Limit: 5, Offset: 10","timestamp":"2025-02-20T07:14:14.878Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 3","timestamp":"2025-02-20T07:14:14.934Z"}
+{"level":"info","message":"Task with ID 50028 updated successfully","timestamp":"2025-02-20T07:14:47.973Z"}
+{"level":"info","message":"User ID: 1, Page: 3, Limit: 5, Offset: 10","timestamp":"2025-02-20T07:14:48.225Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 3","timestamp":"2025-02-20T07:14:48.287Z"}
+{"level":"info","message":"User ID: 1, Page: 2, Limit: 5, Offset: 5","timestamp":"2025-02-20T07:15:00.362Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 2","timestamp":"2025-02-20T07:15:00.417Z"}
+{"level":"info","message":"User ID: 1, Page: 1, Limit: 5, Offset: 0","timestamp":"2025-02-20T07:15:02.014Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 1","timestamp":"2025-02-20T07:15:02.078Z"}

@@ -1,8 +1,8 @@
-// src/app/api/v1/tasks/[id]/route.js
 import { NextResponse } from 'next/server';
 import { query } from '../../../../lib/mysql';
-import logger from '../../../../lib/logger'; // Import the logger
+import logger from '../../../../lib/logger';
 
+// PUT Method: Update task by ID
 export async function PUT(req) {
     const url = req.nextUrl.pathname;
     const id = url.split('/').pop();
@@ -32,18 +32,47 @@ export async function PUT(req) {
     }
 }
 
-export async function GET(req) {
-    const user = verifyToken(req);
-    if (user instanceof NextResponse) return user; // If the token verification fails, return the error response
+// DELETE Method: Delete task by ID
+export async function DELETE(req) {
+    const url = req.nextUrl.pathname;
+    const id = url.split('/').pop();
 
     try {
-        const tasks = await query('SELECT tasks.* FROM tasks JOIN users ON users.id = tasks.user_id WHERE tasks.user_id = ?', [user.id]);
-        if (tasks.length === 0) {
-            return NextResponse.json({ error: 'Your Task is empty.' }, { status: 404 });
+        const result = await query('DELETE FROM tasks WHERE id = ?', [id]);
+
+        if (result.affectedRows === 0) {
+            logger.warn(`Task deletion failed: Task with ID ${id} not found`);
+            return NextResponse.json({ error: 'Task not found.' }, { status: 404 });
         }
-        return NextResponse.json({ tasks });
+
+        logger.info(`Task with ID ${id} deleted successfully`);
+        return NextResponse.json({ message: 'Task deleted successfully' });
     } catch (error) {
-        console.error('Error during task retrieval:', error);
+        logger.error(`Error during task deletion for task ID ${id}: ${error.message}`);
+        return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
+    }
+}
+
+// GET Method: Retrieve task by ID
+export async function GET(req) {
+    const url = req.nextUrl.pathname;
+    const id = url.split('/').pop();
+
+    const user = verifyToken(req);
+    if (user instanceof NextResponse) return user;
+
+    try {
+        const tasks = await query('SELECT * FROM tasks WHERE user_id = ? AND id = ?', [user.id, id]);
+
+        if (tasks.length === 0) {
+            logger.warn(`Task with ID ${id} not found for user ${user.id}`);
+            return NextResponse.json({ error: 'Task not found.' }, { status: 404 });
+        }
+
+        logger.info(`Successfully retrieved task for user ${user.id} with ID ${id}`);
+        return NextResponse.json({ task: tasks[0] });
+    } catch (error) {
+        logger.error(`Error during task retrieval for user ${user.id} with ID ${id}: ${error.message}`);
         return NextResponse.json({ error: 'Internal server error' }, { status: 500 });
     }
 }
