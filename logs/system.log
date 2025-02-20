@@ -143,3 +143,57 @@
 {"level":"info","message":"Successfully retrieved tasks for user 1 on page 2","timestamp":"2025-02-20T07:15:00.417Z"}
 {"level":"info","message":"User ID: 1, Page: 1, Limit: 5, Offset: 0","timestamp":"2025-02-20T07:15:02.014Z"}
 {"level":"info","message":"Successfully retrieved tasks for user 1 on page 1","timestamp":"2025-02-20T07:15:02.078Z"}
+{"level":"warn","message":"Login failed: User with email jane.doe2@example.com not found","timestamp":"2025-02-20T07:20:24.189Z"}
+{"level":"warn","message":"Login failed: User with email john1.doe@example.com not found","timestamp":"2025-02-20T07:20:34.705Z"}
+{"level":"info","message":"User jane.doe20@example.com logged in successfully","timestamp":"2025-02-20T07:20:45.936Z"}
+{"level":"info","message":"User ID: 1, Page: 1, Limit: 5, Offset: 0","timestamp":"2025-02-20T07:20:52.581Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 1","timestamp":"2025-02-20T07:20:53.280Z"}
+{"level":"info","message":"User ID: 1, Page: 1, Limit: 5, Offset: 0","timestamp":"2025-02-20T07:20:53.300Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 1","timestamp":"2025-02-20T07:20:53.376Z"}
+{"level":"info","message":"User ID: 1, Page: 2, Limit: 5, Offset: 5","timestamp":"2025-02-20T07:21:52.728Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 2","timestamp":"2025-02-20T07:21:52.851Z"}
+{"level":"info","message":"User ID: 1, Page: 3, Limit: 5, Offset: 10","timestamp":"2025-02-20T07:22:18.761Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 3","timestamp":"2025-02-20T07:22:18.825Z"}
+{"level":"info","message":"Task created successfully for user 1. Task ID: 50031","timestamp":"2025-02-20T07:22:28.611Z"}
+{"level":"info","message":"User ID: 1, Page: 3, Limit: 5, Offset: 10","timestamp":"2025-02-20T07:22:28.654Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 3","timestamp":"2025-02-20T07:22:28.718Z"}
+{"level":"error","message":"Error during logout: ","timestamp":"2025-02-20T07:22:54.897Z"}
+{"level":"info","message":"User ID: 1, Page: 1, Limit: 5, Offset: 0","timestamp":"2025-02-20T07:24:59.149Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 1","timestamp":"2025-02-20T07:24:59.631Z"}
+{"level":"info","message":"User undefined logged out successfully","timestamp":"2025-02-20T07:25:09.267Z"}
+{"level":"info","message":"User jane.doe20@example.com logged in successfully","timestamp":"2025-02-20T07:26:01.194Z"}
+{"level":"info","message":"User ID: 1, Page: 1, Limit: 5, Offset: 0","timestamp":"2025-02-20T07:26:01.802Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 1","timestamp":"2025-02-20T07:26:02.102Z"}
+{"level":"info","message":"User ID: 1, Page: 1, Limit: 5, Offset: 0","timestamp":"2025-02-20T07:26:02.137Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 1","timestamp":"2025-02-20T07:26:02.318Z"}
+{"level":"info","message":"User ID: 1, Page: 2, Limit: 5, Offset: 5","timestamp":"2025-02-20T07:26:08.467Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 2","timestamp":"2025-02-20T07:26:08.531Z"}
+{"level":"info","message":"User ID: 1, Page: 1, Limit: 5, Offset: 0","timestamp":"2025-02-20T07:26:09.199Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 1","timestamp":"2025-02-20T07:26:09.263Z"}
+{"level":"info","message":"User ID: 1, Page: 1, Limit: 5, Offset: 0","timestamp":"2025-02-20T07:33:18.273Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 1","timestamp":"2025-02-20T07:33:18.687Z"}
+{"level":"info","message":"User ID: 1, Page: 1, Limit: 5, Offset: 0","timestamp":"2025-02-20T07:33:19.377Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 1","timestamp":"2025-02-20T07:33:19.609Z"}
+{"level":"info","message":"User ID: 1, Page: 2, Limit: 5, Offset: 5","timestamp":"2025-02-20T07:33:24.798Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 2","timestamp":"2025-02-20T07:33:25.011Z"}
+{"level":"info","message":"User ID: 1, Page: 3, Limit: 5, Offset: 10","timestamp":"2025-02-20T07:33:28.653Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 3","timestamp":"2025-02-20T07:33:28.827Z"}
+{"level":"info","message":"User ID: 1, Page: 2, Limit: 5, Offset: 5","timestamp":"2025-02-20T07:33:31.989Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 2","timestamp":"2025-02-20T07:33:32.071Z"}
+{"level":"info","message":"User ID: 1, Page: 3, Limit: 5, Offset: 10","timestamp":"2025-02-20T07:33:34.233Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 3","timestamp":"2025-02-20T07:33:34.321Z"}
+{"level":"info","message":"User ID: 1, Page: 2, Limit: 5, Offset: 5","timestamp":"2025-02-20T07:33:36.098Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 2","timestamp":"2025-02-20T07:33:36.182Z"}
+{"level":"info","message":"User ID: 1, Page: 3, Limit: 5, Offset: 10","timestamp":"2025-02-20T07:33:37.888Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 3","timestamp":"2025-02-20T07:33:37.998Z"}
+{"level":"info","message":"User ID: 1, Page: 2, Limit: 5, Offset: 5","timestamp":"2025-02-20T07:33:39.269Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 2","timestamp":"2025-02-20T07:33:39.358Z"}
+{"level":"info","message":"User ID: 1, Page: 1, Limit: 5, Offset: 0","timestamp":"2025-02-20T07:33:40.531Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 1","timestamp":"2025-02-20T07:33:40.620Z"}
+{"level":"info","message":"User ID: 1, Page: 2, Limit: 5, Offset: 5","timestamp":"2025-02-20T07:33:42.513Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 2","timestamp":"2025-02-20T07:33:42.613Z"}
+{"level":"info","message":"User ID: 1, Page: 1, Limit: 5, Offset: 0","timestamp":"2025-02-20T07:33:43.844Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 1","timestamp":"2025-02-20T07:33:43.928Z"}
+{"level":"info","message":"User ID: 1, Page: 1, Limit: 5, Offset: 0","timestamp":"2025-02-20T07:34:13.438Z"}
+{"level":"info","message":"Successfully retrieved tasks for user 1 on page 1","timestamp":"2025-02-20T07:34:14.154Z"}
+{"level":"info","message":"User ID: 1, Page: 1, Limit: 5, Offset: 0","timestamp":"2025-02-20T07:37:54.554Z"}

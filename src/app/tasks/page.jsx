@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import TaskList from "../components/TaskList";
 import TaskModal from "../components/TaskModal";
 import LogoutButton from "../components/logout";
@@ -24,20 +24,27 @@ const TaskManager = () => {
     totalTasks: 0,
     limit: 5,
   });
+
   const router = useRouter();
+  const searchParams = useSearchParams();
+
+  // Get current page and limit from URL or default values
+  useEffect(() => {
+    const page = parseInt(searchParams.get("page")) || 1;
+    const limit = parseInt(searchParams.get("limit")) || 5;
+
+    fetchTasks(page, limit);
+  }, [searchParams]); // Re-run when URL parameters change
 
   // Fetch tasks from the API with pagination
-  const fetchTasks = async (page = 1) => {
+  const fetchTasks = async (page = 1, limit = 5) => {
     const token = localStorage.getItem("accessToken");
-    const res = await fetch(
-      `/api/v1/tasks?page=${page}&limit=${pagination.limit}`,
-      {
-        method: "GET",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      }
-    );
+    const res = await fetch(`/api/v1/tasks?page=${page}&limit=${limit}`, {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
     const data = await res.json();
     if (res.status === 401) {
       router.push("/login");
@@ -59,14 +66,29 @@ const TaskManager = () => {
     }
   };
 
-  useEffect(() => {
-    fetchTasks();
-  }, []);
-
+  // Update URL when page changes
   const handlePageChange = (newPage) => {
     if (newPage >= 1 && newPage <= pagination.totalPages) {
-      fetchTasks(newPage);
+      // Create new URLSearchParams object
+      const params = new URLSearchParams(searchParams);
+      params.set("page", newPage.toString());
+      params.set("limit", pagination.limit.toString());
+
+      // Update the URL without refreshing the page
+      router.push(`/tasks?${params.toString()}`);
     }
+  };
+
+  // Handle changing the limit (tasks per page)
+  const handleLimitChange = (event) => {
+    const newLimit = parseInt(event.target.value);
+    setPagination((prev) => ({ ...prev, limit: newLimit }));
+    // Update the URL to reflect the new limit
+    const params = new URLSearchParams(searchParams);
+    params.set("limit", newLimit.toString());
+    params.set("page", "1"); // Reset to page 1 when the limit changes
+    router.push(`/tasks?${params.toString()}`);
+    fetchTasks(1, newLimit); // Fetch tasks with the new limit
   };
 
   const handleCreateTask = async () => {
@@ -97,7 +119,7 @@ const TaskManager = () => {
         status: "Pending",
       });
       setShowModal(false);
-      fetchTasks(pagination.currentPage);
+      fetchTasks(pagination.currentPage, pagination.limit);
     } else {
       Swal.fire({
         title: "Error!",
@@ -137,7 +159,7 @@ const TaskManager = () => {
         status: "Pending",
       });
       setShowModal(false);
-      fetchTasks(pagination.currentPage);
+      fetchTasks(pagination.currentPage, pagination.limit);
     } else {
       Swal.fire({
         title: "Error!",
@@ -166,9 +188,9 @@ const TaskManager = () => {
       });
       // If we're on the last page and delete the last item, go to previous page
       if (tasks.length === 1 && pagination.currentPage > 1) {
-        fetchTasks(pagination.currentPage - 1);
+        handlePageChange(pagination.currentPage - 1);
       } else {
-        fetchTasks(pagination.currentPage);
+        fetchTasks(pagination.currentPage, pagination.limit);
       }
     } else {
       Swal.fire({
@@ -186,12 +208,23 @@ const TaskManager = () => {
         <h1 className="text-4xl font-bold text-gray-800 transition-all duration-300 hover:text-blue-600">
           Task Management
         </h1>
-        <button
-          onClick={() => setShowModal(true)}
-          className="bg-blue-500 text-white p-3 rounded-md shadow-md hover:bg-blue-600 transition-all duration-300"
-        >
-          Create New Task
-        </button>
+        <div className="flex items-center gap-4">
+          <select
+            value={pagination.limit}
+            onChange={handleLimitChange}
+            className="p-2 border border-gray-300 rounded-md"
+          >
+            <option value={5}>5 tasks per page</option>
+            <option value={10}>10 tasks per page</option>
+            <option value={15}>15 tasks per page</option>
+          </select>
+          <button
+            onClick={() => setShowModal(true)}
+            className="bg-blue-500 text-white p-3 rounded-md shadow-md hover:bg-blue-600 transition-all duration-300"
+          >
+            Create New Task
+          </button>
+        </div>
         <LogoutButton />
       </div>
 
