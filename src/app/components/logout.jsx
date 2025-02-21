@@ -14,8 +14,6 @@ const LogoutButton = () => {
         // Clear localStorage to remove the token
         localStorage.removeItem("accessToken");
         localStorage.removeItem("refreshToken");
-
-        // Optionally, you can redirect the user to the login page or home page after successful logout
         window.location.href = "/login"; // Redirect to login page
       } else {
         // Handle error if the logout fails

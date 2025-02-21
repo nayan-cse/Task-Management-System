@@ -31,7 +31,7 @@ export async function POST(req) {
 
         logger.info(`User ${email} logged in successfully`);
         const accessToken = jwt.sign({ id: user.id, email: user.email, username: user.username }, JWT_SECRET, { expiresIn: JWT_ACCESS_TOKEN_EXPIRATION });
-        const refreshToken = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { expiresIn: JWT_REFRESH_TOKEN_EXPIRATION });
+        const refreshToken = jwt.sign({ id: user.id, email: user.email, username: user.username }, JWT_SECRET, { expiresIn: JWT_REFRESH_TOKEN_EXPIRATION });
 
         const headers = {
             'Set-Cookie': `refresh_token=${refreshToken}; HttpOnly; Max-Age=${JWT_REFRESH_TOKEN_EXPIRATION}; Path=/; Secure; SameSite=Strict`,

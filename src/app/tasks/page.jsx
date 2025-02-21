@@ -3,7 +3,6 @@ import React, { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import TaskList from "../components/TaskList";
 import TaskModal from "../components/TaskModal";
-import LogoutButton from "../components/logout";
 import Swal from "sweetalert2";
 import { ClipLoader } from "react-spinners";
 
@@ -35,19 +34,72 @@ const TaskManager = () => {
     fetchTasks(page, limit);
   }, [searchParams]);
 
+  // Function to refresh the access token using the refresh token
+  const refreshAccessToken = async () => {
+    const refreshToken = localStorage.getItem("refreshToken");
+
+    if (!refreshToken) {
+      return null;
+    }
+
+    try {
+      const response = await fetch("/api/v1/auth/refresh-token", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ refresh_token: refreshToken }),
+      });
+
+      const data = await response.json();
+
+      if (response.status === 200) {
+        // Store new tokens in localStorage
+        localStorage.setItem("accessToken", data.accessToken);
+        return data.accessToken;
+      } else {
+        // Refresh token is invalid or expired, redirect to login
+        localStorage.removeItem("accessToken");
+        localStorage.removeItem("refreshToken");
+        router.push("/login");
+        return null;
+      }
+    } catch (error) {
+      console.error("Error refreshing token:", error);
+      return null;
+    }
+  };
+
+  // Function to fetch tasks with error handling for token expiration
   const fetchTasks = async (page = 1, limit = 5) => {
     setLoading(true);
+
     const token = localStorage.getItem("accessToken");
+
     const res = await fetch(`/api/v1/tasks?page=${page}&limit=${limit}`, {
       method: "GET",
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
+
     const data = await res.json();
     setLoading(false);
+
     if (res.status === 401) {
-      router.push("/login");
+      // If the token is expired, try refreshing it
+      const newAccessToken = await refreshAccessToken();
+      if (newAccessToken) {
+        // Retry fetching tasks with the new access token
+        fetchTasks(page, limit);
+      } else {
+        Swal.fire({
+          title: "Error!",
+          text: "Session expired. Please log in again.",
+          icon: "error",
+          confirmButtonText: "OK",
+        });
+      }
     } else if (res.status === 200) {
       setTasks(data.tasks || []);
       setPagination({
@@ -88,6 +140,7 @@ const TaskManager = () => {
   const handleCreateTask = async () => {
     setLoading(true);
     const token = localStorage.getItem("accessToken");
+
     const res = await fetch("/api/v1/tasks", {
       method: "POST",
       headers: {
@@ -98,6 +151,7 @@ const TaskManager = () => {
     });
     const data = await res.json();
     setLoading(false);
+
     if (res.status === 200) {
       Swal.fire({
         title: "Success!",
@@ -127,6 +181,7 @@ const TaskManager = () => {
   const handleUpdateTask = async () => {
     setLoading(true);
     const token = localStorage.getItem("accessToken");
+
     const res = await fetch(`/api/v1/tasks/${selectedTask.id}`, {
       method: "PUT",
       headers: {
@@ -137,6 +192,7 @@ const TaskManager = () => {
     });
     const data = await res.json();
     setLoading(false);
+
     if (res.status === 200) {
       Swal.fire({
         title: "Success!",
@@ -173,6 +229,7 @@ const TaskManager = () => {
       },
     });
     const data = await res.json();
+
     if (res.status === 200) {
       Swal.fire({
         title: "Deleted!",
@@ -247,7 +304,6 @@ const TaskManager = () => {
         </button>
       </div>
 
-      {/* Centered spinner */}
       {loading && (
         <div className="flex justify-center items-center w-full h-full absolute bg-white bg-opacity-50 z-50">
           <ClipLoader color={"#000"} loading={loading} size={50} />
@@ -262,7 +318,6 @@ const TaskManager = () => {
         handleDeleteTask={handleDeleteTask}
       />
 
-      {/* Pagination Controls */}
       <div className="flex justify-between items-center mt-6">
         <div className="text-sm text-gray-600">
           Showing page {pagination.currentPage} of {pagination.totalPages} (
