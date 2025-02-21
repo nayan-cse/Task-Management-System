@@ -17,7 +17,6 @@ const RegisterForm = () => {
 
     try {
       const response = await fetch("/api/v1/auth/register", {
-        // Call your registration API
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -29,12 +28,29 @@ const RegisterForm = () => {
       setLoading(false);
 
       if (response.status === 201) {
-        // Registration was successful
-        console.log("Registration successful:", data);
-        // Redirect to login or home page
-        router.push("/login"); // Redirect to login page after successful registration
+        // Registration successful
+        Swal.fire({
+          title: "Success!",
+          text: "Registration Successful!",
+          icon: "success",
+          confirmButtonText: "OK",
+        });
+        router.push("/login");
+      } else if (response.status === 400) {
+        Swal.fire({
+          title: "Error!",
+          text: data.error || "Email already used", // Show specific error message
+          icon: "error",
+          confirmButtonText: "OK",
+        });
       } else {
-        setError(data.error || "Something went wrong!");
+        // General error for other status codes
+        Swal.fire({
+          title: "Error!",
+          text: data.error || "Something went wrong!",
+          icon: "error",
+          confirmButtonText: "OK",
+        });
       }
     } catch (error) {
       setLoading(false);
@@ -44,7 +60,7 @@ const RegisterForm = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white rounded-md shadow-md">
+    <div className="max-w-md mx-auto p-6 bg-white rounded-md shadow-md sm:max-w-sm md:max-w-lg lg:max-w-xl">
       <h2 className="text-2xl font-semibold text-center mb-6">
         Create Account
       </h2>

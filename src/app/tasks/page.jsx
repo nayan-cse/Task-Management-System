@@ -29,15 +29,12 @@ const TaskManager = () => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  // Get current page and limit from URL or default values
   useEffect(() => {
     const page = parseInt(searchParams.get("page")) || 1;
     const limit = parseInt(searchParams.get("limit")) || 5;
-
     fetchTasks(page, limit);
-  }, [searchParams]); // Re-run when URL parameters change
+  }, [searchParams]);
 
-  // Fetch tasks from the API with pagination
   const fetchTasks = async (page = 1, limit = 5) => {
     setLoading(true);
     const token = localStorage.getItem("accessToken");
@@ -69,29 +66,23 @@ const TaskManager = () => {
     }
   };
 
-  // Update URL when page changes
   const handlePageChange = (newPage) => {
     if (newPage >= 1 && newPage <= pagination.totalPages) {
-      // Create new URLSearchParams object
       const params = new URLSearchParams(searchParams);
       params.set("page", newPage.toString());
       params.set("limit", pagination.limit.toString());
-
-      // Update the URL without refreshing the page
       router.push(`/tasks?${params.toString()}`);
     }
   };
 
-  // Handle changing the limit (tasks per page)
   const handleLimitChange = (event) => {
     const newLimit = parseInt(event.target.value);
     setPagination((prev) => ({ ...prev, limit: newLimit }));
-    // Update the URL to reflect the new limit
     const params = new URLSearchParams(searchParams);
     params.set("limit", newLimit.toString());
-    params.set("page", "1"); // Reset to page 1 when the limit changes
+    params.set("page", "1");
     router.push(`/tasks?${params.toString()}`);
-    fetchTasks(1, newLimit); // Fetch tasks with the new limit
+    fetchTasks(1, newLimit);
   };
 
   const handleCreateTask = async () => {
@@ -189,7 +180,6 @@ const TaskManager = () => {
         icon: "success",
         confirmButtonText: "OK",
       });
-
       if (tasks.length === 1 && pagination.currentPage > 1) {
         handlePageChange(pagination.currentPage - 1);
       } else {

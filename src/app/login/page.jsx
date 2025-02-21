@@ -1,6 +1,6 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter } from "next/navigation"; // Use Next.js's useRouter for navigation
 import Swal from "sweetalert2";
 
 const LoginForm = () => {
@@ -17,6 +17,7 @@ const LoginForm = () => {
       router.push("/tasks");
     }
   }, [router]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -59,7 +60,7 @@ const LoginForm = () => {
 
   return (
     <div className="flex justify-center items-center min-h-screen bg-gray-100">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
+      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md sm:max-w-sm md:max-w-lg lg:max-w-xl">
         <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
 
         {error && (
